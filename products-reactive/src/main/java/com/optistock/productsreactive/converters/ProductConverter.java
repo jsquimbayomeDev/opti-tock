@@ -1,32 +1,35 @@
 package com.optistock.productsreactive.converters;
 
-import com.optistock.productsreactive.dtos.ProductEntryDTO;
+import com.optistock.productsreactive.dtos.product;
 import com.optistock.productsreactive.dtos.ProductExitDTO;
 import com.optistock.productsreactive.domain.model.Product;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.LinkedList;
 
 @Component
 public class ProductConverter {
 
-    public Product ProductEntryDTOtoProduct(ProductEntryDTO ProductEntryDTO) {
-        try {
-            Product Product = new Product();
-            Product.setEmail(ProductEntryDTO.getEmail());
-            Product.setProductname(ProductEntryDTO.getProductname());
-            Product.setPassword(ProductEntryDTO.getPassword());
-
-            return Product;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public Mono<ProductExitDTO> productToProductExit(Product product) {
+        return Mono.just(
+                ProductExitDTO.builder()
+                        .brand(product.getBrand())
+                        .category(product.getCategory())
+                        .entryDate(product.getEntryDate())
+                        .quantity(product.getQuantity())
+                        .price(product.getPrice())
+                        .expirationDate(product.getExpirationDate())
+                        .status(product.getStatus())
+                        .modificationDate(product.getModificationDate())
+                        .build()
+        );
     }
 
-    public ProductExitDTO ProducttoProductExit(Product Product) {
-        ProductExitDTO ProductExitDTO = new ProductExitDTO();
-        ProductExitDTO.setId(Product.getId());
-        ProductExitDTO.setEmail(Product.getEmail());
-        ProductExitDTO.setProductname(Product.getProductname());
-        return ProductExitDTO;
+
+    public Flux<ProductExitDTO> toExitDTOFlux(Flux<Product> products) {
+        return products.flatMap(this::productToProductExit);
     }
 
 }

@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
-import java.util.LinkedList;
-
 
 @Controller
 @RequestMapping("products-search")
@@ -26,21 +24,21 @@ public class ProductsReactiveController implements IProductsReactiveController {
     @Override
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public Flux<LinkedList<ProductExitDTO>> getProductsByFilters(String category, String brand) {
+    public Flux<ProductExitDTO>  getProductsByFilters(String category, String brand) {
         return iProductsReactiveServices.getProductsByFilters(category, brand);
     }
 
     @Override
     @GetMapping("/tooutofstock")
     @ResponseStatus(HttpStatus.OK)
-    public Flux<LinkedList<ProductExitDTO>> getProductsToOutOfStock() {
+    public Flux<ProductExitDTO>  getProductsToOutOfStock() {
         return iProductsReactiveServices.getProductsToOutOfStock();
     }
 
     @Override
     @GetMapping("outofstock")
     @ResponseStatus(HttpStatus.OK)
-    public Flux<LinkedList<ProductExitDTO>> getProductsOutOfStock() {
+    public Flux<ProductExitDTO> getProductsOutOfStock() {
         return iProductsReactiveServices.getProductsOutOfStock();
     }
 }
