@@ -1,13 +1,10 @@
 package com.optistock.productsreactive.converters;
 
-import com.optistock.productsreactive.dtos.product;
 import com.optistock.productsreactive.dtos.ProductExitDTO;
 import com.optistock.productsreactive.domain.model.Product;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.LinkedList;
 
 @Component
 public class ProductConverter {

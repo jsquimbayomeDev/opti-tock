@@ -17,7 +17,8 @@ import java.util.Date;
 @Builder
 public class ProductExitDTO implements Serializable {
 
-    public String idProduct;
+    public String   idProduct;
+    public String   name;
     public String   category;
     public String   brand;
 

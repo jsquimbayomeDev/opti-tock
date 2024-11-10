@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class product implements Serializable {
+public class ProductEntryDTO implements Serializable {
 
     public String   name;
     public String   category;
