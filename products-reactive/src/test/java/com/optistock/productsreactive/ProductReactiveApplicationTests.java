@@ -1,10 +1,10 @@
-package com.optistock.users;
+package com.optistock.productsreactive;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UsersApplicationTests {
+class ProductReactiveApplicationTests {
 
     @Test
     void contextLoads() {

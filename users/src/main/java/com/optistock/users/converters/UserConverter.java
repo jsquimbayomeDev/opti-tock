@@ -1,8 +1,8 @@
 package com.optistock.users.converters;
 
-import com.optistock.users.dtos.UserEntryDTO;
-import com.optistock.users.dtos.UserExitDTO;
-import com.optistock.users.models.User;
+import com.optistock.users.commons.dtos.UserEntryDTO;
+import com.optistock.users.commons.dtos.UserExitDTO;
+import com.optistock.users.domain.model.User;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,7 +1,7 @@
 package com.optistock.users.services;
 
-import com.optistock.users.dtos.UserEntryDTO;
-import com.optistock.users.dtos.UserExitDTO;
+import com.optistock.users.commons.dtos.UserEntryDTO;
+import com.optistock.users.commons.dtos.UserExitDTO;
 
 public interface IUsersServices {
 

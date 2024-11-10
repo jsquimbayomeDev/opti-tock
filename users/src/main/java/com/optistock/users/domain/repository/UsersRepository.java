@@ -1,7 +1,6 @@
-package com.optistock.users.repository;
+package com.optistock.users.domain.repository;
 
-import com.optistock.users.commons.exceptions.AlreadyExistsException;
-import com.optistock.users.models.User;
+import com.optistock.users.domain.model.User;
 
 import java.util.Optional;
 

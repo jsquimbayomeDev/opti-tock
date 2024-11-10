@@ -3,10 +3,10 @@ package com.optistock.users.services.impl;
 
 import com.optistock.users.commons.exceptions.InvalidCredentialsException;
 import com.optistock.users.converters.UserConverter;
-import com.optistock.users.dtos.UserEntryDTO;
-import com.optistock.users.dtos.UserExitDTO;
-import com.optistock.users.models.User;
-import com.optistock.users.repository.UsersRepository;
+import com.optistock.users.commons.dtos.UserEntryDTO;
+import com.optistock.users.commons.dtos.UserExitDTO;
+import com.optistock.users.domain.model.User;
+import com.optistock.users.domain.repository.UsersRepository;
 import com.optistock.users.services.IUsersServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

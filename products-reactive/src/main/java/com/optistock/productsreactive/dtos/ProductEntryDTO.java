@@ -1,4 +1,4 @@
-package com.optistock.users.dtos;
+package com.optistock.productsreactive.dtos;
 
 
 import lombok.AllArgsConstructor;
@@ -12,10 +12,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserExitDTO implements Serializable {
+public class ProductEntryDTO implements Serializable {
 
-    public String id;
     public String email;
-    public String username;
+    public String Productname;
+    public String password;
 
 }

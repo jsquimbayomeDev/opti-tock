@@ -1,4 +1,4 @@
-package com.optistock.users.dtos;
+package com.optistock.users.commons.dtos;
 
 
 import lombok.AllArgsConstructor;

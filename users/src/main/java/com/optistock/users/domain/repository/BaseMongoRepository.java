@@ -1,8 +1,7 @@
-package com.optistock.users.repository;
+package com.optistock.users.domain.repository;
 
 import com.optistock.users.commons.exceptions.AlreadyExistsException;
 import com.optistock.users.commons.exceptions.NotFoundException;
-import com.optistock.users.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
