@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.optistock</groupId>
-    <artifactId>products</artifactId>
+    <artifactId>product</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>products</name>
-    <description>products</description>
+    <name>product</name>
+    <description>product</description>
     <url/>
     <licenses>
         <license/>
@@ -60,6 +60,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
         </dependency>
     </dependencies>
 
