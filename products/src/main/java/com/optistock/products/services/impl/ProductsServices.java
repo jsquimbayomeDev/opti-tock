@@ -2,52 +2,58 @@ package com.optistock.products.services.impl;
 
 
 import com.optistock.products.converters.ProductsConverter;
-import com.optistock.products.dtos.ProductsEntryDTO;
-import com.optistock.products.dtos.ProductsExitDTO;
-import com.optistock.products.models.Products;
+import com.optistock.products.dtos.ProductEntryDTO;
+import com.optistock.products.dtos.ProductExitDTO;
+import com.optistock.products.models.Product;
 import com.optistock.products.repository.ProductsRepository;
-import com.optistock.products.services.IUProductsServices;
+import com.optistock.products.services.IProductsServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsServices implements IUProductsServices {
+@Service
+public class ProductsServices implements IProductsServices {
 
     @Autowired
-
     ProductsRepository productsRepository;
 
     @Autowired
     ProductsConverter productsConverter;
 
-    @Autowired
-
-    @GetMapping
-    public List<ProductsEntryDTO> getAllProducts() {
-        return service.getAllProducts();
-    }
-
-
 
     @Override
-    public void createProduct(ProductsEntryDTO productsDTO) {
+    public List<ProductExitDTO> getAllProducts() {
+        try{
+            List<Product> products =  productsRepository.findAll();
+            List<ProductExitDTO> productExitDTOS = new ArrayList<>();
+            products.stream().forEach(product -> productExitDTOS.add(productsConverter.productsToProductsExitDTO(product)));
+            return productExitDTOS;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public void createProduct(ProductEntryDTO productsDTO) {
         try {
-            Products products = productsConverter.productsEntryDTOToProduct(productsDTO);
-            productsRepository.saveIfNotExists(products);
+            Product product = productsConverter.productsEntryDTOToProduct(productsDTO);
+            productsRepository.saveIfNotExists(product);
         }catch (Exception e){
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public ProductsExitDTO updateUser(ProductsEntryDTO productsEntryDTO) {
+    public ProductExitDTO updateProduct(ProductEntryDTO productEntryDTO) {
         try {
-            Products products = productsRepository.findByNameOrException(productsEntryDTO.getNombre());
-            productsConverter.productsEntryDTOToProduct(productsEntryDTO);
-            ProductsRepository.save(products);
-            ProductsExitDTO productsExitDTO = ProductsConverter.productstoExit(products);
-            return productsExitDTO;
+            Product product = productsRepository.findByNameOrException(productEntryDTO.getName());
+            productsConverter.productsEntryDTOToProduct(productEntryDTO);
+            productsRepository.save(product);
+            ProductExitDTO productExitDTO = productsConverter.productsToProductsExitDTO(product);
+            return productExitDTO;
 
         }catch (Exception e) {
             throw new RuntimeException(e);
@@ -55,9 +61,9 @@ public class ProductsServices implements IUProductsServices {
     }
 
     @Override
-    public void deleteProduct(String Id) {
-        productsConverter.findByIdOrException(idProducto);
-        deleteProduct(idProducto);
+    public void deleteProduct(String id) {
+        productsRepository.findByIdOrException(id);
+        productsRepository.deleteById(id);
 
     }
 }
